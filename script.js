@@ -31,7 +31,13 @@ function display(number) {
 
 function operator(sign) {
     var display = output.getAttribute('value');
-    output.setAttribute('value', display + sign);
+    
+    if (display.includes(sign)) {
+        equals();
+    }
+    else {
+        output.setAttribute('value', display + sign);
+    }
 };
 
 function clearContent() {
