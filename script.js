@@ -1,9 +1,5 @@
 const output = document.getElementById('output');
 const operators = document.querySelectorAll('.operator');
-// const addition = document.querySelector('.add');
-// const division = document.querySelector('.divide');
-// const subtraction = document.querySelector('.subtract');
-// const multiplication = document.querySelector('.multipy');
 
 operators.forEach(operator => {
     operator.addEventListener('click', findOperator => {
