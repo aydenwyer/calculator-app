@@ -1,4 +1,26 @@
 const output = document.getElementById('output');
+const operators = document.querySelectorAll('.operator');
+// const addition = document.querySelector('.add');
+// const division = document.querySelector('.divide');
+// const subtraction = document.querySelector('.subtract');
+// const multiplication = document.querySelector('.multipy');
+
+operators.forEach(operator => {
+    operator.addEventListener('click', findOperator => {
+        if (operator.classList.contains('add')) {
+            globalThis.sign = '+';
+        }
+        else if (operator.classList.contains('subtract')) {
+            globalThis.sign = '-';
+        }
+        else if (operator.classList.contains('multiply')) {
+            globalThis.sign = '*';
+        }
+        else if (operator.classList.contains('divide')) {
+            globalThis.sign = '/';
+        };
+    });
+});
 
 function display(number) {
     var display = output.getAttribute('value');
@@ -23,31 +45,29 @@ function clearContent() {
 
 function equals() {
     var display = output.getAttribute('value');
-    var firstOperand = display.substr(0, display.indexOf('+', '-', '*', "/"));
-    var secondOperand = display.substr(display.indexOf('+', '-', '*', "/")+1);
-    var operatorPosition = display.indexOf('+', '-', '*', "/");
-    var operator = display.charAt(operatorPosition);
-    
-    // console.log(firstOperand);
-    // console.log(secondOperand);
-    // console.log(operator);
+    var firstOperand = display.substr(0, display.indexOf(sign));
+    var secondOperand = display.substr(display.indexOf(sign)+1);
 
-    switch (operator) {
+    switch (sign) {
         case "+":
             result = Number(firstOperand) + Number(secondOperand);
-            console.log(result);
+            output.removeAttribute('value');
+            output.setAttribute('value', result);
             break;
         case "-":
             result = Number(firstOperand) - Number(secondOperand);
-            console.log(result);
+            output.removeAttribute('value');
+            output.setAttribute('value', result);
             break;
         case "*":
             result = Number(firstOperand) * Number(secondOperand);
-            console.log(result);
+            output.removeAttribute('value');
+            output.setAttribute('value', result);
             break;
         case "/":
             result = Number(firstOperand) / Number(secondOperand);
-            console.log(result);
+            output.removeAttribute('value');
+            output.setAttribute('value', result);
             break;
     };
 };
